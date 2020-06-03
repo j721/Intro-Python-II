@@ -36,19 +36,21 @@ room['treasure'].s_to = room['narrow']
 
 #
 # Main
-#
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player('Wizard', room['outside'])
+#print(f"Greetings, {player.name}")
+# print('Player is in the:', player.current_room.name
 
+running = true
 # Write a loop that:
+while running:
+    #Prints the current room name
+    print(f"You are in: {player.current_room.name}")
+    # Prints the current description (the textwrap module might be useful here).
+    print(f"You are seeing {player.current_room.description}")
 
-# * Prints the current room name
-print('Player is in the:',player.current_room.name)
-
-
-# * Prints the current description (the textwrap module might be useful here).
-# * Waits for user input and decides what to do.
+# Waits for user input and decides what to do.
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
