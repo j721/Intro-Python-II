@@ -44,6 +44,8 @@ player = Player('Wizard', room['outside'])
 # Write a loop that:
 #
 # * Prints the current room name
+
+
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
 #

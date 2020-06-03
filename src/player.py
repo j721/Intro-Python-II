@@ -5,4 +5,8 @@ class Player:
     def __init__(self, name, current_room):
         self.name = name
         self.current_room = current_room
-    def move_to(self, direction, current_loc):
+        self.items = []  #List of items that are currently in that room.
+    def __str__(self):
+        print(self.name, self.current_room, self.items)
+    def __repr__(self):
+        return self
