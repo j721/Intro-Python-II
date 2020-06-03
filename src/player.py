@@ -2,11 +2,11 @@
 # currently.
 
 class Player:
-    def __init__(self, name, current_room):
+    def __init__(self, name, current_room, Items =[]):
         self.name = name
         self.current_room = current_room
-        self.items = []  #List of items that are currently in that room.
+        self.Items = []  #List of items that are currently in that room.
     def __str__(self):
-        print(self.name, self.current_room, self.items)
+        print(self.name, self.current_room, self.Items)
     def __repr__(self):
         return self
