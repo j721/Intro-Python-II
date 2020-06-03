@@ -42,8 +42,9 @@ room['treasure'].s_to = room['narrow']
 player = Player('Wizard', room['outside'])
 
 # Write a loop that:
-#
+
 # * Prints the current room name
+print('Player is in the:',player.current_room.name)
 
 
 # * Prints the current description (the textwrap module might be useful here).
