@@ -12,7 +12,7 @@ class Room:
         self.name = name
         self.description = description
         self.items = items
-        #assigning direction attributes to room
+        #assigning direction attributes to room. Initializing the rooms having no value
         self.n_to = None
         self.s_to = None
         self.e_to = None
