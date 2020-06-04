@@ -6,17 +6,17 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
+                     "North of you, the cave mount beckons" , [Item("Cupcake Power Booster", "This is used to make you stronger")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+passages run north and east.""", [Item("light saber", "May the force be with you.")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm."""),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+to north. The smell of gold permeates the air.""", [Item("night vision googles", "this helps you to see in the dark.")]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
@@ -40,20 +40,20 @@ room['treasure'].s_to = room['narrow']
 
 items ={
     "cupcake": Item("Cupcake Power Booster", "This is used to make you stronger"),
-    "night vision googles": Item("Night vision googles", "This will help you to see if the dark."),
+    "night vision googles": Item("Night vision googles", "This will help you to see in the dark."),
     "light saber": Item("light saber", "May the force be with you.")
 }
 
-room['outside'].items.append(items["cupcake"])
-room['narrow'].items.append(items["night vision googles"])
-room['foyer'].items.append(items["light saber"])
+# room['outside'].add_item(Item("Cupcake Power Booster", "This is used to make you stronger"))
+# room['narrow'].add_item(Item[("night vision googles", "this helps you to see in the dark.")])
+# room['foyer'].items.append(items["light saber"])
 
 # Make a new player object that is currently in the 'outside' room.
 new_player = Player('Wizard', room['outside'])
-print(f"Greetings, {new_player.name}")
+print(f"\n Greetings, {new_player.name}")
 print('Player is in the:', new_player.current_room.name)
 print(f"You are seeing {new_player.current_room.description}")
-
+# print(new_player.current_room.list_items())
 
 running = True
 # Write a loop that:
@@ -64,7 +64,7 @@ while running:
     # print(f"You are seeing {new_player.current_room.description}")
 
 # Waits for user input and decides what to do.
-    selection = input("What do you want to do?\n n for north, e for east, w for west, s for south. q for quit game.\n Or enter in a command to pick up or drop item)")
+    selection = input("\n What do you want to do?\n n for north, e for east, w for west, s for south. q for quit game.\n Or enter in a command to pick up or drop item, or i to print out list of items.)")
     user_selection = selection.lower().split(" ")
 
 # If the user enters a cardinal direction, attempt to move to the room there.
@@ -84,10 +84,10 @@ while running:
         else:
             print("Sorry, command is not recognized.")
 
-    elif len(user_selection) ==2:
-        if user_selection[0] in ["get", "pickup"]:
-            if new_player.items [user_selection[1]]:
-                new_player.pickup_item(new_player.items[user_selection[1]])
+    elif len(user_selection) == 2:
+        if user_selection[0].lower() == "get":
+            if items[user_selection[1]]:
+                new_player.pickup_item(items[user_selection[1]])
 
                 print("\n\n You have now added a new item into your listed inventory!")
                 print(f"{new_player.name} is in {new_player.current_room}\n")
@@ -109,18 +109,3 @@ while running:
 # If the user enters "q", quit the game.
 
 
-#2nd method to move
-
-# def try_direction(player,direction):
-#     #check the player's current location and see if there is a room is the specificed direction
-
-# command =command[0]
-
-# if command == 'n':
-#     try_direction(player,direction):
-# elif command == "s":
-#     try_direction(player,direction):
-# elif command == "w":
-#     try_direction(player,direction):
-# elif command == "e":   
-#     try_direction(player,direction):

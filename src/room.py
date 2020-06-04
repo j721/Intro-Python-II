@@ -21,6 +21,9 @@ class Room:
     def __str__(self):
         print (self.name, self.description)
     
+    def add_item(self, item):
+        self.items.append(item)
+    
     def list_items(self):
         if not self.items:
             print("Sorry, this room contains no items in it.")

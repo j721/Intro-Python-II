@@ -19,7 +19,7 @@ class Player:
         if self.current_room.items.count(item) > 0:
             self.items.append(item)
             self.current_room.items.remove(item)
-            item.pickup()
+            item.pick_up()
         else:
             print(f"A {item.name} is not in this room.")
     
