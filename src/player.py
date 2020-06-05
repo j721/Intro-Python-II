@@ -15,21 +15,33 @@ class Player:
         else:
             print("There is no room available in that direction. Try again.")
     
-    def pickup_item(self, item):
-        if self.current_room.items.count(item) > 0:
-            self.items.append(item)
-            self.current_room.items.remove(item)
-            item.pick_up()
-        else:
-            print(f"A {item.name} is not in this room.")
+    # def pickup_item(self, player):
+    #     player.items.append(self)
+    #     player.current_room.items.remove(self)
+    #     print(f"You have picked up {self.name}")
     
-    def drop_item(self,item):
-        if self.items.count(item) > 0:
-            self.current_room.items.append(item)
-            self.items.remove(item)
-            item.drop()
-        else:
-            print(f"You do not have the item: {item.name} to drop.")
+    
+    # def on_drop(self,player):
+    #     player.items.remove(self)
+    #     player.current_room.items.append(self)
+    #     print(f"You have dropped this item: {self.name}")
+    
+    # def pickup_item(self, item):
+    #     if self.current_room.items.count(item) > 0:
+    #         self.items.append(item)
+    #         self.current_room.items.remove(item)
+    #         item.pick_up()
+    #     else:
+    #         print(f"A {item.name} is not in this room.")
+
+    
+    # def drop_item(self,item):
+    #     if self.items.count(item) > 0:
+    #         self.current_room.items.append(item)
+    #         self.items.remove(item)
+    #         item.drop()
+    #     else:
+    #         print(f"You do not have the item: {item.name} to drop.")
     
     def print_items(self):
         if not self.items:

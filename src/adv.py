@@ -6,17 +6,17 @@ from item import Item
 
 room = {
     'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons" , [Item("Cupcake Power Booster", "This is used to make you stronger")]),
+                     "North of you, the cave mount beckons" , [Item("booster", "This is used to make you stronger")]),
 
     'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east.""", [Item("light saber", "May the force be with you.")]),
+passages run north and east.""", [Item("saber", "May the force be with you.")]),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
 into the darkness. Ahead to the north, a light flickers in
 the distance, but there is no way across the chasm."""),
 
     'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air.""", [Item("night vision googles", "this helps you to see in the dark.")]),
+to north. The smell of gold permeates the air.""", [Item("googles", "this helps you to see in the dark.")]),
 
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
@@ -85,25 +85,43 @@ while running:
             print("Sorry, command is not recognized.")
 
     elif len(user_selection) == 2:
-        if user_selection[0].lower() == "get":
-            if items[user_selection[1]]:
-                new_player.pickup_item(items[user_selection[1]])
-
-                print("\n\n You have now added a new item into your listed inventory!")
-                print(f"{new_player.name} is in {new_player.current_room}\n")
-                print(new_player.current_room.list_items())
-            else:
-                print("That isn't an item.")
-        elif user_selection[0] == "drop":
-            if items[user_selection[1]]:
-                new_player.drop_item(items[user_selection[1]])
-                print("You have dropped an item!")
-                print(new_player.print_items())
-                print(f"{new_player.name} is in {new_player.current_room} \n")
-            else:
-                print("That item does not exist.")
+        if user_selection[0] in ['get', 'take', 'pickup']:
+            for item in new_player.current_room.items:
+                if item.name == user_selection[1]:
+                    item.pickup_item(new_player)
+                else:
+                    print(f"{user_selection[1]} not found in this room.")
+        elif user_selection[0] in ['drop', 'put down', 'place']:
+            for item in new_player.items:
+                if item.name == user_selection[1]:
+                    item.on_drop(new_player)
         else:
-            print("That command is not valid.")
+            print("Try a different command.")
+
+
+    # elif len(user_selection) ==2:
+    #       if user_selection[0] in ["get", "pickup"]:
+    #            if new_player.items [user_selection[1]]:
+    #                 new_player.pickup_item(new_player.items[user_selection[1]])
+
+    #                 print("\n\n You have now added a new item into your listed inventory!")
+    #                 print(f"{new_player.name} is in {new_player.current_room}\n")
+    #                 print(new_player.current_room.list_items())
+
+        
+             
+        #     else:
+        #         print("That isn't an item.")
+        # elif user_selection[0] == "drop":
+        #     if items[user_selection[1]]:
+        #         new_player.on_drop(items[user_selection[1]])
+        #         print("You have dropped an item!")
+        #         print(new_player.print_items())
+        #         print(f"{new_player.name} is in {new_player.current_room} \n")
+        #     else:
+        #         print("That item does not exist.")
+        # else:
+        #     print("That command is not valid.")
 
 # Print an error message if the movement isn't allowed.
 # If the user enters "q", quit the game.
