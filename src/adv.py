@@ -40,8 +40,8 @@ room['treasure'].s_to = room['narrow']
 
 items ={
     "cupcake": Item("Cupcake Power Booster", "This is used to make you stronger"),
-    "night vision googles": Item("Night vision googles", "This will help you to see in the dark."),
-    "light saber": Item("light saber", "May the force be with you.")
+    "googles": Item("Night vision googles", "This will help you to see in the dark."),
+    "saber": Item("light saber", "May the force be with you.")
 }
 
 # room['outside'].add_item(Item("Cupcake Power Booster", "This is used to make you stronger"))
@@ -83,7 +83,7 @@ while running:
         
         else:
             print("Sorry, command is not recognized.")
-
+    #needs get + item(name). two words!
     elif len(user_selection) == 2:
         if user_selection[0] in ['get', 'take', 'pickup']:
             for item in new_player.current_room.items:
